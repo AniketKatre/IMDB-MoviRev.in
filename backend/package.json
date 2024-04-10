@@ -1,0 +1,14 @@
+{
+  "name": "imdb_movie_review",
+  "version": "1.0.0",
+  "description": "movie critic and review applications and see critics",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "aniket_katre",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
