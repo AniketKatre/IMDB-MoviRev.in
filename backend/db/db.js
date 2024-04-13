@@ -1,8 +1,7 @@
 // mongodb+srv://katreaniket3:anniejb90@cluster0.40pqktw.mongodb.net/IMDb_Movi?retryWrites=true&w=majority&appName=Cluster0
 const mongoose = require("mongoose");
 
-const URI =
-  "mongodb+srv://katreaniket3:anniejb90@cluster0.40pqktw.mongodb.net/IMDb_Movi?retryWrites=true&w=majority&appName=Cluster0";
+const URI = process.env.MONGO_URI;
 
 mongoose
   .connect(URI)
