@@ -4,23 +4,16 @@ import Title from "../form/Title";
 import FormInput from "../form/FormInput";
 import Submit from "../form/Submit";
 import { CustomLink } from "../CustomLink";
-// import { ThemeContext } from "../../context/ThemeProvider";
-import { useTheme } from "../../hooks/theme";
-import { commonModalClasses } from "../../utils/theme";
 import FormContainer from "../form/FormContainer";
+import { commonModalClasses } from "../../utils/theme";
 
-export const Signin = () => {
-  // const theme = useTheme();
-  // // console.log(theme);
-  // theme.method();
-
+const ForgetPassword = () => {
   return (
     <>
       <FormContainer>
         <Container>
-          {/* <form className="bg-slate-800  rounded p-6 w-80 space-y-6"> */}
           <form className={commonModalClasses + " w-80"}>
-            <Title>Sign In</Title>
+            <Title>Please Enter Your Email</Title>
 
             <FormInput
               label="Email"
@@ -28,18 +21,10 @@ export const Signin = () => {
               name="email"
             />
 
-            <FormInput
-              label="Password"
-              placeholder="********"
-              name="password"
-            />
-
-            <Submit value="Sign In" />
+            <Submit value="Send Link" />
 
             <div className="flex justify-between">
-              <CustomLink to="/auth/forget-password">
-                Forget Password
-              </CustomLink>
+              <CustomLink to="/auth/signin">Sign In</CustomLink>
 
               <CustomLink to="/auth/signup">Sign Up</CustomLink>
             </div>
@@ -50,3 +35,5 @@ export const Signin = () => {
     </>
   );
 };
+
+export default ForgetPassword;

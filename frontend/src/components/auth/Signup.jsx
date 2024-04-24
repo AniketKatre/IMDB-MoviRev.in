@@ -4,23 +4,18 @@ import Title from "../form/Title";
 import FormInput from "../form/FormInput";
 import Submit from "../form/Submit";
 import { CustomLink } from "../CustomLink";
-// import { ThemeContext } from "../../context/ThemeProvider";
-import { useTheme } from "../../hooks/theme";
 import { commonModalClasses } from "../../utils/theme";
 import FormContainer from "../form/FormContainer";
 
-export const Signin = () => {
-  // const theme = useTheme();
-  // // console.log(theme);
-  // theme.method();
-
+export const Signup = () => {
   return (
     <>
       <FormContainer>
         <Container>
-          {/* <form className="bg-slate-800  rounded p-6 w-80 space-y-6"> */}
           <form className={commonModalClasses + " w-80"}>
-            <Title>Sign In</Title>
+            <Title>Sign Up</Title>
+
+            <FormInput label="Name" placeholder="annie_jb_" name="name" />
 
             <FormInput
               label="Email"
@@ -34,14 +29,14 @@ export const Signin = () => {
               name="password"
             />
 
-            <Submit value="Sign In" />
+            <Submit value="Sign Up" />
 
             <div className="flex justify-between">
               <CustomLink to="/auth/forget-password">
                 Forget Password
               </CustomLink>
 
-              <CustomLink to="/auth/signup">Sign Up</CustomLink>
+              <CustomLink to="/auth/signin">Sign In</CustomLink>
             </div>
           </form>
         </Container>
