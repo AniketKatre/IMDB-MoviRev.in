@@ -2,10 +2,13 @@ import React from "react";
 import { IoSunny } from "react-icons/io5";
 import Container from "../Container";
 import { Link } from "react-router-dom";
-import { useTheme } from "../../hooks/theme";
+import { useAuth, useTheme } from "../../hooks/theme";
 
 export const Navbar = () => {
   const { toggleTheme } = useTheme();
+
+  const { authInfo, handleLogout } = useAuth();
+  const { isLoggedIn } = authInfo;
 
   return (
     <>
@@ -24,8 +27,22 @@ export const Navbar = () => {
                   placeholder=" Search..."
                 />
               </li>
-              <li className="text-white font-semibold text-lg">
-                <Link to="/auth/signin">Login</Link>
+              <li>
+                {isLoggedIn ? (
+                  <button
+                    onClick={handleLogout}
+                    className="text-white font-semibold text-lg"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link
+                    className="text-white font-semibold text-lg"
+                    to="/auth/signin"
+                  >
+                    Login
+                  </Link>
+                )}
               </li>
               <li>
                 <button

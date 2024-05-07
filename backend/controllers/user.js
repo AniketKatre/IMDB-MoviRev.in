@@ -42,8 +42,11 @@ exports.create = async (req, res) => {
   });
 
   res.status(201).json({
-    message:
-      "Please verify you email. OTP has been sent to your email account!",
+    user: {
+      id: newUser._id,
+      name: newUser.name,
+      email: newUser.email,
+    },
   });
 };
 
@@ -53,6 +56,7 @@ exports.verifyEmail = async (req, res) => {
   if (!isValidObjectId(userId)) return sendError(res, "Invalid user!");
 
   const user = await User.findById(userId);
+
   if (!user) return sendError(res, "user not found!", 404);
 
   if (user.isVerified) return sendError(res, "user is already verified!");
@@ -75,6 +79,13 @@ exports.verifyEmail = async (req, res) => {
     to: user.email,
     subject: "Welcome Email",
     html: "<h1>Welcome to our app and thanks for choosing us.</h1>",
+  });
+
+  // generate token when success
+  const jwtToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+  res.json({
+    user: { id: user._id, name: user.name, email: user.email, token: jwtToken },
+    message: "Your email is verified",
   });
 
   res.json({ message: "Your email is verified." });
